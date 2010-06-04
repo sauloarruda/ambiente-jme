@@ -67,6 +67,10 @@
 					<midlets>
 						<MIDlet>
 							<name>${project.name}</name>
+							<class>br.com.javamagazine.jme.MainMIDlet</class>
+						</MIDlet>
+						<MIDlet>
+							<name>${project.name}-test</name>
 							<class>br.com.javamagazine.jme.test.UserTest</class>
 						</MIDlet>
 					</midlets>
