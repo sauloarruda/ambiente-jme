@@ -2,10 +2,27 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.javamagazine.jme</groupId>
-	<artifactId>hello-world</artifactId>
+	<artifactId>auth</artifactId>
 	<version>1.0.0</version>
-	<name>hello-world</name>
+	<name>auth</name>
 	<dependencies>
+		<dependency>
+			<groupId>net.sourceforge.floggy</groupId>
+			<artifactId>floggy-persistence-framework</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>jmunit</groupId>
+			<artifactId>jmunit4cldc11</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.floggy</groupId>
+			<artifactId>floggy-persistence-weaver</artifactId>
+			<version>1.2.0</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>javax.microedition</groupId>
 			<artifactId>midpapi</artifactId>
@@ -46,14 +63,32 @@
 					<wtkHome>${env.WTK_HOME}</wtkHome>
 					<useWtkLibs>false</useWtkLibs>
 					<proguardPreverify>true</proguardPreverify>
+					<obfuscate>false</obfuscate>
 					<midlets>
 						<MIDlet>
 							<name>${project.name}</name>
-							<class>br.com.javamagazine.jme.MainMIDlet</class>
+							<class>br.com.javamagazine.jme.test.UserTest</class>
 						</MIDlet>
 					</midlets>
 					<midletVendor>sauloarruda.eti.br</midletVendor>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>net.sourceforge.floggy</groupId>
+				<artifactId>maven-floggy-plugin</artifactId>
+				<version>1.2.0</version>
+				<executions>
+					<execution>
+						<id>persistence-weaver</id>
+						<goals>
+							<goal>persistence-weaver</goal>
+						</goals>
+						<phase>process-classes</phase>
+						<configuration>
+							<generateSource>false</generateSource>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
