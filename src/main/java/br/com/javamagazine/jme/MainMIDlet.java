@@ -13,7 +13,7 @@ public class MainMIDlet extends MIDlet {
 	protected void startApp() throws MIDletStateChangeException {
 		Form form = new Form("MIDlet");
 		form.addCommand(new Command("Sair", Command.EXIT, 1));
-		form.append("Hello World!");
+		form.append("Olá Mundo!");
 		form.setCommandListener(new CommandListener() {
 			public void commandAction(Command arg0, Displayable arg1) {
 				try {
