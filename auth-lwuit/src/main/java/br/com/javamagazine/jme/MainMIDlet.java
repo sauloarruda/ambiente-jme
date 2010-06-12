@@ -11,37 +11,34 @@ import com.sun.lwuit.events.ActionListener;
 
 public class MainMIDlet extends MIDlet implements ActionListener {
 
-    protected void startApp() throws MIDletStateChangeException {
-	Application.initialize();
-	Display.init(this);
-	// LoginForm form = new LoginForm();
-	// Application.setMIDlet(this);
-	try {
-	    new LoginController();
-	} catch (Throwable e) {
-	    // TODO Auto-generated catch block
-	    System.out.println("Erro na aplicação \n");
-	    System.out.println(e.getMessage());
+	protected void startApp() throws MIDletStateChangeException {
+		Application.initialize();
+		Display.init(this);
+		Application.setMIDlet(this);
+		Application.setTheme("/theme.res", "theme1");
+		try {
+			new LoginController();
+		} catch (Throwable e) {
+			System.out.println(e.getMessage());
+		}
 	}
-//	Application.getDisplay().setCurrent(form);
-    }
 
-    protected void destroyApp(boolean arg0) throws MIDletStateChangeException {
-    }
-
-    protected void pauseApp() {
-    }
-
-    public void exit() {
-	try {
-	    destroyApp(false);
-	} catch (MIDletStateChangeException e) {
-	    e.printStackTrace();
+	protected void destroyApp(boolean arg0) throws MIDletStateChangeException {
 	}
-	notifyDestroyed();
-    }
 
-    public void actionPerformed(ActionEvent arg0) {
-	notifyDestroyed();
-    }
+	protected void pauseApp() {
+	}
+
+	public void exit() {
+		try {
+			destroyApp(false);
+		} catch (MIDletStateChangeException e) {
+			e.printStackTrace();
+		}
+		notifyDestroyed();
+	}
+
+	public void actionPerformed(ActionEvent arg0) {
+		notifyDestroyed();
+	}
 }
